@@ -1,0 +1,11 @@
+verbosity=0
+bootlogo=true
+console=both
+disp_mode=1920x1080p60
+overlay_prefix=sun8i-h3
+rootdev=/dev/mmcblk0p2
+rootfstype=ext4
+usbstoragequirks=0x2537:0x1066:u,0x2537:0x1068:u
+extraargs=imgpart=/dev/mmcblk0p2 imgfile=/volumio_current.sqsh net.ifnames=0  hwver=mp0
+overlays=analog-codec i2c0 spdif-out usbhost0 usbhost1 usbhost2 usbhost3
+user_overlays=sun8i-h3-i2s0
