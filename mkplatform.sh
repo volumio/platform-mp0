@@ -84,6 +84,13 @@ for dts in "${C}"/overlay-user/overlays-"${P}"/*.dts; do
   fi
 done
 
+# Fix issue with onboard Ethernet
+echo "Changing Audio interface name(s) for $P"
+dtc -I dtb -O dts "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dtb -o "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dts
+sed -i "s/rgmii/rgmii-id/g" "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dts
+dtc -I dts -O dtb -o "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dtb "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dts
+rm "${P}"/boot/dtb/sun8i-h3-nanopi-m1-plus.dts
+
 # Add extras
 if [ -e "${C}"/extras/extras-"${P}"/asound.state ]
 then
